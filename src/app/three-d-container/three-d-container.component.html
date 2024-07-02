@@ -1,0 +1,37 @@
+<div>
+    <form (ngSubmit)="onSubmit()" #containerForm="ngForm">
+      <label for="length">Length (meters):</label>
+      <input type="number" id="length" [(ngModel)]="length" name="length" required>
+  
+      <label for="height">Height (meters):</label>
+      <input type="number" id="height" [(ngModel)]="height" name="height" required>
+  
+      <label for="width">Width (meters):</label>
+      <input type="number" id="width" [(ngModel)]="width" name="width" required>
+  
+      <label for="color">Container Color:</label>
+      <input type="color" id="color" [(ngModel)]="color" name="color" required>
+  
+      <label for="doorColor">Door Color:</label>
+      <input type="color" id="doorColor" [(ngModel)]="doorColor" name="doorColor" required>
+  
+      <label for="bottomColor">Bottom Layer Color:</label>
+      <input type="color" id="bottomColor" [(ngModel)]="bottomColor" name="bottomColor" required>
+  
+      <label for="bottomOpacity">Bottom Layer Opacity:</label>
+      <input type="range" id="bottomOpacity" [(ngModel)]="bottomOpacity" name="bottomOpacity" min="0" max="1" step="0.1" required>
+  
+      <label for="itemWidth">Item Width (meters):</label>
+      <input type="number" id="itemWidth" [(ngModel)]="itemWidth" name="itemWidth" required>
+  
+      <label for="itemHeight">Item Height (meters):</label>
+      <input type="number" id="itemHeight" [(ngModel)]="itemHeight" name="itemHeight" required>
+  
+      <label for="numItems">Number of Items:</label>
+      <input type="number" id="numItems" [(ngModel)]="numItems" name="numItems" required>
+  
+      <button type="submit">Update Container</button>
+    </form>
+  </div>
+  
+<div #container></div>  
