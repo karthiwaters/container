@@ -86,7 +86,7 @@ export class ThreeDContainerComponent implements AfterViewInit {
     const material = new THREE.LineBasicMaterial({ color: this.doorColor });
     this.door1Mesh = new THREE.LineSegments(door1Geometry, material);
 
-    this.door1Mesh.position.set(this.length / 2 - doorThickness + 0.8 / 2, 0, -this.width/3); // Adjusted position
+    this.door1Mesh.position.set(this.length / 2 - doorThickness + 0.9 / 2, 0, -this.width/3); // Adjusted position
     this.door1Mesh.rotation.y = Math.PI / 4.3; // Initial position is closed
     this.scene.add(this.door1Mesh);
 
@@ -97,7 +97,7 @@ export class ThreeDContainerComponent implements AfterViewInit {
     const door2Geometry = new THREE.BoxGeometry(doorThickness, doorHeight, doorWidth);
     const door2Material = new THREE.LineBasicMaterial({ color: this.doorColor });
     this.door2Mesh = new THREE.LineSegments(door2Geometry, door2Material);
-    this.door2Mesh.position.set(this.length / 2 - doorThickness + 0.8 / 2, 0, this.width / 3); // Adjusted position
+    this.door2Mesh.position.set(this.length / 2 - doorThickness + 0.9 / 2, 0, this.width / 3); // Adjusted position
     this.door2Mesh.rotation.y = -Math.PI / 4.3; // Initial position is closed
     this.scene.add(this.door2Mesh);
 
@@ -109,7 +109,7 @@ export class ThreeDContainerComponent implements AfterViewInit {
       this.scene.remove(this.bottomMesh);
     }
 
-    const bottomGeometry = new THREE.PlaneGeometry(this.length, this.width, 15, 10); // Adding segments for grid
+    const bottomGeometry = new THREE.PlaneGeometry(this.length+5, this.width+5, 15, 10); // Adding segments for grid
     const bottomMaterial = new THREE.MeshBasicMaterial({ color: this.bottomColor, transparent: true, opacity: this.bottomOpacity, wireframe: true });
     this.bottomMesh = new THREE.Mesh(bottomGeometry, bottomMaterial);
     this.bottomMesh.position.set(0, -this.height / 2, 0);
