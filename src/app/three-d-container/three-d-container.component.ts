@@ -26,10 +26,10 @@ export class ThreeDContainerComponent implements AfterViewInit {
   length: number = 6.1; // meters (20ft)
   width: number = 2.44; // meters (8ft)
   height: number = 2.59; // meters (8.5ft)
-  color: string = '#00ff00';
-  doorColor: string = '#ff0000';
-  bottomColor: string = '#0000ff';
-  bottomOpacity: number = 0.5; // Adjust opacity as needed
+  color: string = '#000000'; // Container line color
+  doorColor: string = '#000000'; // Door line color
+  bottomColor: string = '#0000ff'; // Bottom grid color
+  bottomOpacity: number = 0.2; // Adjust opacity as needed
   itemWidth: number = 1.0; // meters
   itemHeight: number = 0.5; // meters
   numItems: number = 10; // Number of items to generate
@@ -78,7 +78,7 @@ export class ThreeDContainerComponent implements AfterViewInit {
     const doorHeight = this.height;
     const doorWidth = this.width / 2; // Half the width of the container for each door
 
-    // Door 1 (left) - Tilt & Turn mechanism
+    // Door 1 (left) - Open position
     if (this.door1Mesh) {
       this.scene.remove(this.door1Mesh);
     }
@@ -90,7 +90,7 @@ export class ThreeDContainerComponent implements AfterViewInit {
     this.door1Mesh.rotation.y = Math.PI / 4.3; // Initial position is closed
     this.scene.add(this.door1Mesh);
 
-    // Door 2 (right) - Tilt & Turn mechanism
+    // Door 2 (right) - Open position
     if (this.door2Mesh) {
       this.scene.remove(this.door2Mesh);
     }
@@ -109,8 +109,8 @@ export class ThreeDContainerComponent implements AfterViewInit {
       this.scene.remove(this.bottomMesh);
     }
 
-    const bottomGeometry = new THREE.PlaneGeometry(this.length, this.width);
-    const bottomMaterial = new THREE.MeshBasicMaterial({ color: this.bottomColor, transparent: true, opacity: this.bottomOpacity });
+    const bottomGeometry = new THREE.PlaneGeometry(this.length, this.width, 15, 10); // Adding segments for grid
+    const bottomMaterial = new THREE.MeshBasicMaterial({ color: this.bottomColor, transparent: true, opacity: this.bottomOpacity, wireframe: true });
     this.bottomMesh = new THREE.Mesh(bottomGeometry, bottomMaterial);
     this.bottomMesh.position.set(0, -this.height / 2, 0);
     this.bottomMesh.rotation.x = -Math.PI / 2;
@@ -127,7 +127,7 @@ export class ThreeDContainerComponent implements AfterViewInit {
     this.itemsGroup = new THREE.Group();
 
     const itemGeometry = new THREE.BoxGeometry(this.itemWidth, this.itemHeight, this.itemWidth);
-    const itemMaterial = new THREE.MeshBasicMaterial({ color: '#ff00ff' }); // Item color
+    const itemMaterial = new THREE.MeshBasicMaterial({ color: '#ff0000' }); // Item color
 
     // Start position for items at one side of the container
     const startX = -this.length / 2 + this.itemWidth / 2;
